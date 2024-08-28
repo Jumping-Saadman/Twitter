@@ -151,3 +151,27 @@ export const updateUser = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await User.find().sort({ createdAt: -1 })
+            // .populate({
+            //     path: "userName",
+                // select: "-password"
+            // })
+            // .populate({
+            //     path: "comments.user",
+            //     select: "-password",
+            // }
+        // );
+
+        if(users.length === 0) {
+            return res.status(200).json([]);
+        }
+
+        res.status(200).json(users);
+    } catch (error) {
+        console.log("Error in getAllUsers controller: ", error);
+        res.status(500).json({ error: "Internal server error!" });
+    }
+}
