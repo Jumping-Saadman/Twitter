@@ -146,7 +146,7 @@ export const getAllPosts = async (req, res) => {
         console.log("Error in getAllPosts controller: ", error);
         res.status(500).json({ error: "Internal server error!" });
     }
-}
+};
 
 export const getLikedPosts = async (req, res) => {
     try {
@@ -168,7 +168,7 @@ export const getLikedPosts = async (req, res) => {
         console.log("Error in getLikedPosts controller: ", error);
         res.status(500).json({ error: "Internal server error!" });
     }
-}
+};
 
 export const getFollowingPosts = async (req, res) => {
     try {
@@ -194,7 +194,7 @@ export const getFollowingPosts = async (req, res) => {
         console.log("Error in getFollowingPosts controller: ", error);
         res.status(500).json({ error: "Internal server error!" });
     }
-}
+};
 
 export const getUserPosts = async (req, res) => {
     try {
@@ -219,4 +219,4 @@ export const getUserPosts = async (req, res) => {
         console.log("Error in getUserPosts controller: ", error);
         res.status(500).json({ error: "Internal server error!" });
     }
-}
+};
