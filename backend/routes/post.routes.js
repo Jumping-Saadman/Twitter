@@ -3,6 +3,7 @@ import { protectRoute } from "../middleware/protectRoute.js";
 import {
     commentOnPost,
     createPost,
+    editPost,
     deletePost,
     getAllPosts,
     getFollowingPosts,
@@ -18,6 +19,7 @@ router.get("/following", protectRoute, getFollowingPosts);
 router.get("/likes/:id", protectRoute, getLikedPosts);
 router.get("/user/:userName", protectRoute, getUserPosts);
 router.post("/create", protectRoute, createPost);
+router.post("/edit/:id", protectRoute, editPost);
 router.post("/like/:id", protectRoute, likeUnlikePost);
 router.post("/comment/:id", protectRoute, commentOnPost);
 router.delete("/:id", protectRoute, deletePost);

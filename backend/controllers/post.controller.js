@@ -37,6 +37,48 @@ export const createPost = async (req, res) => {
     }
 };
 
+export const editPost = async (req, res) => {
+    try {
+        let post = await Post.findById(req.params.id);
+        if(!post) {
+            return res.status(404).json({ error: "Post not found!" });
+        }
+
+        if(post.user.toString() !== req.user._id.toString()) {
+            return res.status(401).json({ error: "You are not authorized to edit this post!" });
+        }
+
+        const { text } = req.body;
+        let { img } = req.body;
+        const userId = req.user._id.toString();
+
+        const user = await User.findById(userId);
+        if (!user) return res.status(400).json({ message: "User not found!" });
+        
+        if (!text && !img) {
+            return res.status(400).json({ post: "Post must have text or image!" });
+        }
+
+        if (img) {
+            if(post.img) {
+                await cloudinary.uploader.destroy(post.img.split("/").pop().split(".")[0]);
+            }
+            const uploadedResponse = await cloudinary.uploader.upload(img);
+            img = uploadedResponse.secure_url;
+        }
+
+        post.text = text || post.text;
+        post.img = img || post.img;
+
+        post = await post.save();
+        return res.status(200).json(post);
+        
+    } catch (error) {
+        res.status(500).json({ error: "Internal server error!" });
+        console.log("Error in editPost controller: ", error);
+    }
+}
+
 export const deletePost = async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);

@@ -1,0 +1,11 @@
+# issues
+1. edit post feature
+2. after signup auto sign in?
+3. verification mail system while signing up?
+4. Video uploading feature
+5. retweet feature
+6. emoji button functionality
+7. password change should be separate from profile update
+8. post image appearing black
+9. comment like feature
+10. error in image uploading (check messenger of Ridoy bhai)
