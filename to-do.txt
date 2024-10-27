@@ -1,6 +1,6 @@
 # issues
-1. edit post feature
-2. after signup auto sign in?
+1. edit post feature (currently working) <=
+✔ 2. after signup auto sign in 
 3. verification mail system while signing up?
 4. Video uploading feature
 5. retweet feature
@@ -9,3 +9,5 @@
 8. post image appearing black
 9. comment like feature
 10. error in image uploading (check messenger of Ridoy bhai)
+11. make comment ux better
+12. why is there a comma in main.jsx?
